@@ -108,24 +108,30 @@
 
 
 
-  <meta name="description" content="一道简单的爬虫，计算老司机的车速。。。">
+  <meta name="description" content="emmmmmmmmmm，还真的都是没有见过的。。。。。。。。。。。。。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫小练习">
-<meta property="og:url" content="http://yoursite.com/2018/08/07/爬虫小练习/index.html">
+<meta property="og:title" content="黑客榜中榜 第一期">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/黑客榜中榜-第一期/index.html">
 <meta property="og:site_name" content="H.">
-<meta property="og:description" content="一道简单的爬虫，计算老司机的车速。。。">
+<meta property="og:description" content="emmmmmmmmmm，还真的都是没有见过的。。。。。。。。。。。。。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-07T00:51:58.383Z">
+<meta property="og:image" content="https://i.imgur.com/kIKoGTp.png">
+<meta property="og:image" content="https://i.imgur.com/ybi64iP.png">
+<meta property="og:image" content="https://i.imgur.com/Kf0FMVu.png">
+<meta property="og:image" content="https://i.imgur.com/MMqb52i.png">
+<meta property="og:image" content="https://i.imgur.com/KxRJe2z.png">
+<meta property="og:updated_time" content="2018-08-07T11:26:59.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爬虫小练习">
-<meta name="twitter:description" content="一道简单的爬虫，计算老司机的车速。。。">
+<meta name="twitter:title" content="黑客榜中榜 第一期">
+<meta name="twitter:description" content="emmmmmmmmmm，还真的都是没有见过的。。。。。。。。。。。。。。。">
+<meta name="twitter:image" content="https://i.imgur.com/kIKoGTp.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/07/爬虫小练习/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/07/黑客榜中榜-第一期/"/>
 
 
 
@@ -135,7 +141,7 @@
   };
 </script>
 
-  <title>爬虫小练习 | H.</title>
+  <title>黑客榜中榜 第一期 | H.</title>
   
 
 
@@ -304,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/爬虫小练习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/黑客榜中榜-第一期/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿co">
@@ -321,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">爬虫小练习
+          <h1 class="post-title" itemprop="name headline">黑客榜中榜 第一期
               
             
           </h1>
@@ -346,7 +352,7 @@
                 
               
 
-              <time title="创建时间：2018-08-07 08:25:13 / 修改时间：08:51:58" itemprop="dateCreated datePublished" datetime="2018-08-07T08:25:13+08:00">2018-08-07</time>
+              <time title="创建时间：2018-08-07 17:06:32 / 修改时间：19:26:59" itemprop="dateCreated datePublished" datetime="2018-08-07T17:06:32+08:00">2018-08-07</time>
             
 
             
@@ -384,34 +390,29 @@
       
 
       
-        <p>一道简单的爬虫，计算老司机的车速。。。</p>
+        <p>emmmmmmmmmm，还真的都是没有见过的。。。。。。。。。。。。。。。</p>
 <a id="more"></a>
-<p><a href="http://120.24.86.145:8002/qiumingshan/" target="_blank" rel="noopener">题目链接</a></p>
-<p>观察可得，每次刷新页面就会更换数值，所以我们需要在编程里直接把这个式子算出来。。<br>代码如下：</p>
-<pre><code>from bs4 import BeautifulSoup
-import urllib.request
-raw = &apos;http://120.24.86.145:8002/qiumingshan/&apos;
-response = urllib.request.urlopen(raw)
-html = response.read().decode(&apos;utf-8&apos;)
-soup = BeautifulSoup (html,&quot;html.parser&quot;)
-a = str(soup.find_all(&apos;div&apos;))#找到div
-b = a[6:-10]#截取字符串中的表达式的那一段
-c = eval(b)#计算表达式的值
-print (b,&quot;\n&quot;,c)
-</code></pre><p>补充：</p>
-<p><font size="5">1.find_all()</font></p>
-<ol>
-<li>查找标签 soup.find_all(‘tag’)</li>
-<li>查找文本 soup.find_all(text=’text’)</li>
-<li>根据id查找 soup.find_all(id=’tag id’)</li>
-<li>使用正则 soup.find_all(text=re.compile(‘your re’)), soup.find_all(id=re.compile(‘your re’))</li>
-<li>指定属性查找标签 soup.find_all(‘tag’, {‘id’: ‘tag id’, ‘class’: ‘tag class’})</li>
-</ol>
-<p><font size="5">2.eval() 函数</font></p>
-<ol>
-<li>描述：eval() 函数用来执行一个字符串表达式，并返回表达式的值。</li>
-<li>返回值：返回表达式的结果。 </li>
-</ol>
+<p><font face="黑体" size="5">第一关</font><br><a href="http://www.cn-hack.cn/qs/5.htm" target="_blank" rel="noopener">第一关链接</a></p>
+<p><img src="https://i.imgur.com/kIKoGTp.png" alt=""><br>查看页面源代码</p>
+<pre><code>function PassConfirm() {
+var x=document.password.pass.value
+if (x==&quot;go    &quot;) {
+alert(&quot;恭喜您，答对了，进入第二关！&quot;)
+window.open(&quot;2sdfadf.htm&quot;,&quot;_self&quot;) }
+else {
+alert(&quot;别灰心，再试一次!&quot;) 
+window.open(&quot;error.asp&quot;,&quot;_self&quot;) }
+}
+</code></pre><p>看到了如果x满足了x==”go    “，就过关了，所以密码就是引号里面的。</p>
+<p><font face="黑体" size="5">第二关</font><br><a href="http://www.cn-hack.cn/qs/2sdfadf.htm" target="_blank" rel="noopener">第二关连接</a></p>
+<p> <img src="https://i.imgur.com/ybi64iP.png" width="600" height="300" alt=" 。。。 "></p>
+<ul>
+<li>发现右键被禁用；</li>
+<li>可以将图片拉到浏览器另一个页面，但是不要直接拉到桌面上，那样图片的格式是不对的，然后将图片存在桌面上，图片为003.jpg.gif；</li>
+<li>用notepad++打开003.jpg.gif，会看到这么一句话:”下一关or3.htm”，有部分乱码。<br><font face="黑体" size="5">第三关</font><br><a href="http://www.cn-hack.cn/qs/or3.htm" target="_blank" rel="noopener">第三关链接</a><br><img src="https://i.imgur.com/Kf0FMVu.png" alt=""><br>看到这是url编码，找到在线解码工具，然后解码，得到了第四关链接。<br><font face="黑体" size="5">第四关</font><br><a href="http://www.cn-hack.cn/qs/4dfsa.htm" target="_blank" rel="noopener">第四关链接</a><br><img src="https://i.imgur.com/MMqb52i.png" alt=""><br>我试了抓包。。。。然后由于用户名和密码我都不知道是什么格式，所以我没有办法再继续下去，我在上面随便输入了用户名和密码，显示的是“<strong><em>你输入的用户名和密码错误！！ ”</em></strong><br>就在这个页面查看了一下页面源代码，然后，然后，答案就出来了。<br><font face="黑体" size="5">第五关</font><br><a href="http://www.cn-hack.cn/qs/789.htm" target="_blank" rel="noopener">第五关链接</a><br><img src="https://i.imgur.com/KxRJe2z.png" alt=""><br>我们搜索一下SQL注入的万能密码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   &quot;or&quot;a&quot;=&quot;a     </span><br><span class="line">&apos;)or(&apos;a&apos;=&apos;a</span><br><span class="line">&quot;)or(&quot;a&quot;=&quot;a</span><br><span class="line">&apos;or 1=1--</span><br><span class="line">&quot;or 1=1--</span><br><span class="line">&apos;or&quot;=&apos;</span><br><span class="line">&apos;or 1=1%00</span><br><span class="line">&apos;or 1=1/*</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们可以发现这些通用的密码中都有or这两个字母，那么输入or就可以过关咯。。</p>
 
       
     </div>
@@ -439,8 +440,8 @@ print (b,&quot;\n&quot;,c)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/04/爬取校网新闻/" rel="next" title="爬取校网新闻">
-                <i class="fa fa-chevron-left"></i> 爬取校网新闻
+              <a href="/2018/08/07/爬虫小练习/" rel="next" title="爬虫小练习">
+                <i class="fa fa-chevron-left"></i> 爬虫小练习
               </a>
             
           </div>
@@ -448,10 +449,6 @@ print (b,&quot;\n&quot;,c)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/黑客榜中榜-第一期/" rel="prev" title="黑客榜中榜 第一期">
-                黑客榜中榜 第一期 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
