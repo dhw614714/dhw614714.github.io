@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="虽然之前写过了python笔记，不过我觉得那个做的有点走心，hehe，，，我打算最近再把自己不太清楚的好好给总结一下。。">
+<meta name="keywords" content="编码，list，dict">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python笔记（1）">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/python笔记（1）/index.html">
+<meta property="og:site_name" content="H.">
+<meta property="og:description" content="虽然之前写过了python笔记，不过我觉得那个做的有点走心，hehe，，，我打算最近再把自己不太清楚的好好给总结一下。。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/nIDFqob.png">
+<meta property="og:image" content="https://i.imgur.com/CrCcpgF.png">
+<meta property="og:updated_time" content="2018-08-08T01:38:17.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python笔记（1）">
+<meta name="twitter:description" content="虽然之前写过了python笔记，不过我觉得那个做的有点走心，hehe，，，我打算最近再把自己不太清楚的好好给总结一下。。">
+<meta name="twitter:image" content="https://i.imgur.com/nIDFqob.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/07/python笔记（1）/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python笔记（1） | H.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">H.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/python笔记（1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿co">
+      <meta itemprop="description" content="你的眉头开了，我的世界就亮了。">
+      <meta itemprop="image" content="/images/小雨.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python笔记（1）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 20:45:56" itemprop="dateCreated datePublished" datetime="2018-08-07T20:45:56+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-08 09:38:17" itemprop="dateModified" datetime="2018-08-08T09:38:17+08:00">2018-08-08</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>虽然之前写过了python笔记，不过我觉得那个做的有点走心，hehe，，，我打算最近再把自己不太清楚的好好给总结一下。。</p>
+<a id="more"></a>
+<hr>
+<font size="4" face="黑体">1.编码</font><br>(1)  python在后来加入了Unicode编码，字符串’xxx’虽然是ASCII编码，但也可以看成是UTF-8编码，而u’xxx’则只能是Unicode编码。<br>- 把u’xxx’转换为UTF-8编码的’xxx’用encode(‘utf-8’)方法：<br>- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &gt;&gt;&gt; u&apos;ABC&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line">&apos;ABC&apos;</span><br><span class="line">&gt;&gt;&gt; u&apos;中文&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line">&apos;\xe4\xb8\xad\xe6\x96\x87&apos;</span><br></pre></td></tr></table></figure><br><br>- 反过来，把UTF-8编码表示的字符串’xxx’转换为Unicode字符串u’xxx’用decode(‘utf-8’)方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;abc&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">u&apos;abc&apos;</span><br><span class="line">&gt;&gt;&gt; &apos;\xe4\xb8\xad\xe6\x96\x87&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">u&apos;\u4e2d\u6587&apos;</span><br><span class="line">&gt;&gt;&gt; print &apos;\xe4\xb8\xad\xe6\x96\x87&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">中文</span><br></pre></td></tr></table></figure><br><br>(2)因为python源代码也是一个文本文件，所以在当我们的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：<br>    #!/usr/bin/env python<br>    # -<em>- coding: utf-8 -</em>-<br>- 第一行注释是为了告诉linux/OS X系统，这是一个Python可执行程序，windows会忽略这个注释；<br>- 第二行是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文会有乱码输出；<br><br>—————<br><font size="4" face="黑体">2.使用list和tuple</font><br>（1）list<br>- 用索引来访问list中的每一个元素的时候，要记得索引是从<strong>0</strong>开始的；<br>- 如果要取最后一个元素，除了计算索引位置外，还可以用-1做索引，直接获取最后一个元素；<br>- list是一个可变的有序表，可以用<strong>.append()</strong>往list中追加元素到末尾;<br>- list中也可以把元素插入到指定的位置，使用.insert(index, obj)<br>        index – 对象 obj 需要插入的索引位置。<br>        obj  – 要插入列表中的对象。<br>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aList = [123, &apos;xyz&apos;, &apos;zara&apos;, &apos;abc&apos;]</span><br><span class="line">aList.insert( 3, 2009)</span><br><span class="line">print &quot;Final List : &quot;, aList</span><br></pre></td></tr></table></figure><br><br>输出的结果为：<br><code>Final List : [123, &#39;xyz&#39;, &#39;zara&#39;, 2009, &#39;abc&#39;]</code><br><br>- 删除list末尾的元素，用pop()方法，要删除指定位置的元素，用pop(i)方法，其中i是索引位置；<br>- 要把某个元素替换成别的元素，可以直接赋值给对应的索引位置，示例：<br>- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;classmates = [&apos;Michael&apos;, &apos;Bob&apos;, &apos;Tracy&apos;]</span><br><span class="line">&gt;&gt;&gt; classmates[1] = &apos;Sarah&apos;</span><br><span class="line">&gt;&gt;&gt; classmates</span><br><span class="line">[&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]</span><br></pre></td></tr></table></figure><br><br>- list里的元素的数据类型也可以不同；<br>- list元素也可以是另一个list，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = [&apos;python&apos;, &apos;java&apos;, [&apos;asp&apos;, &apos;php&apos;], &apos;scheme&apos;]</span><br><span class="line">&gt;&gt;&gt; len(s)</span><br><span class="line">4</span><br></pre></td></tr></table></figure><br><br>(2)tuple<br>- 这是一种有序列表，叫元组，和list很相似，但是tuple一旦初始化就不能被修改；<br>- 如果要定义一个空的tuple，可以写成():<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = ()</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">()</span><br></pre></td></tr></table></figure><br><br>- 如果要定义只有一个元素的tuple，要这样定义：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = (1,)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">(1,)</span><br></pre></td></tr></table></figure><br><br>只有一个元素的tuple定义时必须加一个逗号，来消除歧义，因为()既可以表示tuple，又可以表示数学公式中的小括号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = (1)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">1</span><br></pre></td></tr></table></figure><br><br>Python规定，这种情况下，按小括号进行计算，计算结果自然是1。<br>- 当tupletuple定义的时候有3个元素，分别是’a’，’b’和一个list，<br><img src="https://i.imgur.com/nIDFqob.png" alt=""><br>当把list的元素’A’和’B’修改为’X’和’Y’后，tuple变为：<br><img src="https://i.imgur.com/CrCcpgF.png" alt=""><br><br>表面上看，tuple的元素确实变了，但其实变的不是tuple的元素，而是list的元素。tuple一开始指向的list并没有改成别的list，所以，tuple所谓的“不变”是说，tuple的每个元素，指向永远不变。即指向’a’，就不能改成指向’b’，指向一个list，就不能改成指向其他对象，但指向的这个list本身是可变的！<br><br>——————-<br><font size="4" face="黑体">3.使用dict和set</font><br>（1）dict<br>- dict的key必须是不可变对象。<br>这是因为dict根据key来计算value的存储位置，如果每次计算相同的key得出的结果不同，那dict内部就完全混乱了。这个通过key计算位置的算法称为哈希算法（Hash）。<br>- 把数据放入dict的方法，除了初始化时指定外，还可以通过key放入，由于一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d[&apos;Jack&apos;] = 90</span><br><span class="line">&gt;&gt;&gt; d[&apos;Jack&apos;]</span><br><span class="line">90</span><br><span class="line">&gt;&gt;&gt; d[&apos;Jack&apos;] = 88</span><br><span class="line">&gt;&gt;&gt; d[&apos;Jack&apos;]</span><br><span class="line">88</span><br></pre></td></tr></table></figure><br><br>-要删除一个key，用pop(key)方法，对应的value也会从dict中删除.<br>(2) set<br>- <strong>set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。</strong><br>要创建一个set，需要提供一个list作为输入集合：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = set([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">set([1, 2, 3])</span><br></pre></td></tr></table></figure><br><br>注意，传入的参数[1,2,3]是一个list，而显示的set([1, 2, 3])只是告诉你这个set内部有1，2，3这3个元素，显示的[]不表示这是一个list。<br>-重复的元素在set中被自动过滤。<br>-通过add(key)方法可以添加元素到set中，可以重复添加，但不会有效果。<br>-通过remove(key)方法删除元素。<br><font size="4" face="微软雅黑">(3)tuple虽然是不变对象，但试试把(1, 2, 3)和(1, [2, 3])放入dict或set中，并解释结果。</font>
+
+<pre><code>&gt;&gt;&gt; a = (&apos;james&apos;, &apos;jordan&apos;, &apos;kobe&apos;)
+&gt;&gt;&gt; dict1 = {a:&apos;篮球运动员&apos;}
+&gt;&gt;&gt; dict1[a]
+&apos;篮球运动员&apos;
+&gt;&gt;&gt; b = a = (&apos;james&apos;, [&apos;jordan&apos;, &apos;kobe&apos;])
+&gt;&gt;&gt; dict2 = {b:&apos;篮球运动员&apos;}
+Traceback (most recent call last):
+  File &quot;&lt;pyshell#4&gt;&quot;, line 1, in &lt;module&gt;
+    dict2 = {b:&apos;篮球运动员&apos;}
+TypeError: unhashable type: &apos;list&apos;
+#tuple a 所指向的三个人是不可变的的 他们都是篮球运动员
+#tuple b 所指向的只有james是不可变的的，还有两个人虽然是叫jordan kobe但不一定就是打篮球的 可能是踢足球的jordan和打乒乓球的kobe
+&gt;&gt;&gt; 
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编码，list，dict/" rel="tag"># 编码，list，dict</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/07/黑客榜中榜-第一期/" rel="next" title="黑客榜中榜 第一期">
+                <i class="fa fa-chevron-left"></i> 黑客榜中榜 第一期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/小雨.png"
+                alt="阿co" />
+            
+              <p class="site-author-name" itemprop="name">阿co</p>
+              <p class="site-description motion-element" itemprop="description">你的眉头开了，我的世界就亮了。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿co</span>
+
+  
+
+  
+</div>
+
+
+
+
+<!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+-->
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.4k字</span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+	<a href="https://github.com/dhw614714"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
