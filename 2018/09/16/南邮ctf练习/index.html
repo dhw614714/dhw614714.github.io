@@ -118,8 +118,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/GDH4kca.png">
 <meta property="og:image" content="https://i.imgur.com/8N63ycX.png">
-<meta property="og:image" content="https://i.imgur.com/DtYXjHR.png">
-<meta property="og:updated_time" content="2018-09-16T13:00:06.980Z">
+<meta property="og:image" content="https://i.imgur.com/cPAOugC.png">
+<meta property="og:updated_time" content="2018-09-16T13:03:33.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南邮ctf练习">
 <meta name="twitter:description" content="发现很多题的思路并不是很局限，有不同的解法，自己掌握的只是还是太少了。。。。。。。。。。">
@@ -351,7 +351,7 @@
                 
               
 
-              <time title="创建时间：2018-09-16 19:50:23 / 修改时间：21:00:06" itemprop="dateCreated datePublished" datetime="2018-09-16T19:50:23+08:00">2018-09-16</time>
+              <time title="创建时间：2018-09-16 19:50:23 / 修改时间：21:03:33" itemprop="dateCreated datePublished" datetime="2018-09-16T19:50:23+08:00">2018-09-16</time>
             
 
             
@@ -392,7 +392,7 @@
         <p>发现很多题的思路并不是很局限，有不同的解法，自己掌握的只是还是太少了。。。。。。。。。。<br><a id="more"></a></p>
 <p>###1.php decode ###<br><img src="https://i.imgur.com/GDH4kca.png" alt=""><br>解题思路：<br>eval()函数会执行括号里的语句，所以我们想要得到flag就需要执行这个语句，将eval改成echo，找一个代码执行工具就可以了，如下所示<br><img src="https://i.imgur.com/8N63ycX.png" alt=""><br>所以flag:nctf{gzip_base64_hhhhhh}</p>
 <p>###2.文件包含###<br>解题思路：点击<a href="http://4.chinalover.sinaapp.com/web7/index.php" target="_blank" rel="noopener">click me? no</a>会出现<a href="http://4.chinalover.sinaapp.com/web7/index.php?file=show.php" target="_blank" rel="noopener">test123</a>发现url为：<a href="http://4.chinalover.sinaapp.com/web7/index.php?file=show.php" target="_blank" rel="noopener">http://4.chinalover.sinaapp.com/web7/index.php?file=show.php</a>  存在文件包含，这道题要用到php://filter<font c="" size="5face="黑体"">可以让文件以base64格式输出</font>，在click me？no页面构造url为：<a href="http://4.chinalover.sinaapp.com/web7/index.php?file=php://filter/read=convert.base64-encode/resource=index.php，" target="_blank" rel="noopener">http://4.chinalover.sinaapp.com/web7/index.php?file=php://filter/read=convert.base64-encode/resource=index.php，</a><br>然后回车得到<br>PGh0bWw+CiAgICA8dGl0bGU+YXNkZjwvdGl0bGU+CiAgICAKPD9waHAKCWVycm9yX3JlcG9ydGluZygwKTsKCWlmKCEkX0dFVFtmaWxlXSl7ZWNobyAnPGEgaHJlZj0iLi9pbmRleC5waHA/ZmlsZT1zaG93LnBocCI+Y2xpY2sgbWU/IG5vPC9hPic7fQoJJGZpbGU9JF9HRVRbJ2ZpbGUnXTsKCWlmKHN0cnN0cigkZmlsZSwiLi4vIil8fHN0cmlzdHIoJGZpbGUsICJ0cCIpfHxzdHJpc3RyKCRmaWxlLCJpbnB1dCIpfHxzdHJpc3RyKCRmaWxlLCJkYXRhIikpewoJCWVjaG8gIk9oIG5vISI7CgkJZXhpdCgpOwoJfQoJaW5jbHVkZSgkZmlsZSk7IAovL2ZsYWc6bmN0ZntlZHVsY25pX2VsaWZfbGFjb2xfc2lfc2lodH0KCj8+CjwvaHRtbD4=<br>通过bs64解密就可以得到flag:nctf{edulcnxxxxxxx_siht}<br>学习链接：<a href="http://wps2015.org/drops/drops/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93.html" target="_blank" rel="noopener">文件包含漏洞总结</a></p>
-<p>###3.单身100年也没有用###<br><a href="http://chinalover.sinaapp.com/web9/" target="_blank" rel="noopener">_到这里找key__</a>，按照单身20年那道题的思路是找不到flag的，所以就尝试一下抓包，然后就得到nctf{this_is_3<img src="https://i.imgur.com/DtYXjHR.png" alt="">02_redirect}</p>
+<p>###3.单身100年也没有用###<br><a href="http://chinalover.sinaapp.com/web9/" target="_blank" rel="noopener">_到这里找key__</a>，按照单身20年那道题的思路是找不到flag的，所以就尝试一下抓包，然后就得到nctf{this_is_3!02_redirect}<br><img src="https://i.imgur.com/cPAOugC.png" alt=""></p>
 
       
     </div>
