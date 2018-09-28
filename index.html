@@ -490,9 +490,13 @@
                 
               
 
-              <time title="创建时间：2018-09-28 22:42:15" itemprop="dateCreated datePublished" datetime="2018-09-28T22:42:15+08:00">2018-09-28</time>
+              <time title="创建时间：2018-09-28 22:42:15 / 修改时间：23:10:48" itemprop="dateCreated datePublished" datetime="2018-09-28T22:42:15+08:00">2018-09-28</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -526,7 +530,38 @@
       
         
           
-            
+            <a id="more"></a>
+<p>###1.SQL注入1###</p>
+<p><form method="post" action="index.php"></form></p>
+<p><input type="text" name="user" value="Username"></p>
+<p><input type="password" name="pass" value="Password"></p>
+<p><input type="submit"><br><br><br><a href="index.phps">Source</a><br></p>
+<p>点开source看到：</p>
+<pre><code>    &lt;html&gt;
+    &lt;head&gt;
+    Secure Web Login
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;?php
+    if($_POST[user] &amp;&amp; $_POST[pass]) {#如果上传两个变量user pass，则继续执行下列代码；
+        mysql_connect(SAE_MYSQL_HOST_M . &apos;:&apos; . SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
+      mysql_select_db(SAE_MYSQL_DB);
+      $user = trim($_POST[user]);
+      $pass = md5(trim($_POST[pass]));#去掉上传的user pass前后的空格，并对pass进行md5加密；
+      $sql=&quot;select user from ctf where (user=&apos;&quot;.$user.&quot;&apos;) and (pw=&apos;&quot;.$pass.&quot;&apos;)&quot;;#从特定的表中取出user并赋值给$sql；
+        echo &apos;&lt;/br&gt;&apos;.$sql;
+      $query = mysql_fetch_array(mysql_query($sql));#对$sql进行查询，并将结果数组化，并赋值给$query；
+      if($query[user]==&quot;admin&quot;) {
+          echo &quot;&lt;p&gt;Logged in! flag:******************** &lt;/p&gt;&quot;;
+      }
+      if($query[user] != &quot;admin&quot;) {
+        echo(&quot;&lt;p&gt;You are not admin!&lt;/p&gt;&quot;);
+      }
+    }
+    echo $query[user];
+?&gt;
+</code></pre><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符；<br>代码的意思就是post user与pass,然后提交post的user必须是admin.但是密码不知道,所以就得在$sql=这句想办法绕过and (pw=’”.$pass.”‘) 这段 ，所以我们可以在user处进行注入，输入“admin’)#”可以把后面的password注释掉，原来的后括号也没了，所以要补上括号<br><img src="https://i.imgur.com/3nnU4F8.png" alt=""></p>
+
           
         
       
@@ -1914,7 +1949,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1989,7 +2026,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.7k字</span>
+  <span class="post-count">博客全站共8.9k字</span>
 </div>
 
 
