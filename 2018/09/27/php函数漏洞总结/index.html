@@ -119,7 +119,8 @@
 <meta property="og:image" content="https://i.imgur.com/G8PpK89.png">
 <meta property="og:image" content="https://i.imgur.com/xvYCJgr.png">
 <meta property="og:image" content="https://i.imgur.com/BKtPRLt.png">
-<meta property="og:updated_time" content="2018-09-27T13:24:59.126Z">
+<meta property="og:image" content="https://i.imgur.com/QkEIIcg.png">
+<meta property="og:updated_time" content="2018-09-28T14:38:44.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php函数漏洞总结">
 <meta name="twitter:description" content="php中存在的漏洞。。。you understand？？？">
@@ -351,12 +352,24 @@
                 
               
 
-              <time title="创建时间：2018-09-27 20:39:28 / 修改时间：21:24:59" itemprop="dateCreated datePublished" datetime="2018-09-27T20:39:28+08:00">2018-09-27</time>
+              <time title="创建时间：2018-09-27 20:39:28" itemprop="dateCreated datePublished" datetime="2018-09-27T20:39:28+08:00">2018-09-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-28 22:38:44" itemprop="dateModified" datetime="2018-09-28T22:38:44+08:00">2018-09-28</time>
               
             
           </span>
@@ -401,7 +414,7 @@ if ($a != &apos;QNKCDZO&apos; &amp;&amp; $md51 == $md52) {
     echo &quot;false!!!&quot;;
 }}
 else{echo &quot;please input a&quot;;}
-</code></pre><p>由题目所给源代码分析，输入a ，要使a等于字符串 QNKCDZO 经过md5加密后的数且不能等于该字符串，该字符串经过md5加密后等于0，将QNKCDZO进行md5加密，密文为0e830400451993494058024219903391，发现密文为0e开头，PHP在进行比较运算时，如果遇到了0e\d+这种字符串，就会将这种字符串解析为科学计数法。因为0exx都等于0，所以让两者相等故只需要寻找一个经过md5加密后数值等于0的字符串提交，即可得到flag。（以oe开头md5汇总：<a href="https://www.bbsmax.com/A/kmzLxxDYzG/）" target="_blank" rel="noopener">https://www.bbsmax.com/A/kmzLxxDYzG/）</a><br><img src="https://i.imgur.com/G8PpK89.png" alt=""><br>加index.php含义：index.php,是用上述方法制作好网业文件的格式后缀名。<br>－－－－－－－－－－－－－－－－－－－－－－－－</p>
+</code></pre><p>由题目所给源代码分析，输入a ，要使a等于字符串 QNKCDZO 经过md5加密后的数且不能等于该字符串，该字符串经过md5加密后等于0，将QNKCDZO进行md5加密，密文为0e830400451993494058024219903391，发现密文为0e开头，PHP在进行比较运算时，如果遇到了0e\d+这种字符串，就会将这种字符串解析为科学计数法。因为0exx都等于0，所以让两者相等故只需要寻找一个经过md5加密后数值等于0的字符串提交，即可得到flag。（以oe开头md5汇总：<a href="https://www.bbsmax.com/A/kmzLxxDYzG/）" target="_blank" rel="noopener">https://www.bbsmax.com/A/kmzLxxDYzG/）</a><br><img src="https://i.imgur.com/G8PpK89.png" alt=""><br>加index.php含义：index.php,是用上述方法制作好网业文件的格式后缀名。</p>
 <p>###２.sha1 和 md5 函数###<br>ｍｄ５和ｓｈａ１无法处理数组，返回ＮＵＬＬ<br>例：</p>
 <pre><code>if (isset($_GET[&apos;a&apos;]) and isset($_GET[&apos;b&apos;])) {
 if ($_GET[&apos;a&apos;] != $_GET[&apos;b&apos;])
@@ -412,6 +425,34 @@ print &apos;Wrong.&apos;;
 }
 </code></pre><p>这道题与上面那道题思路类似，就是ａ与ｂ不一样，但经过ｍｄ５加密后的值一样，这道题有两种方法解决，第一就是利用ｐｈｐ处理ｏｅ开头的字符串，返回相同的值；<br><img src="https://i.imgur.com/xvYCJgr.png" alt=""></p>
 <p>第二就是利用ｐｈｐ无法处理数组来解决；<br><img src="https://i.imgur.com/BKtPRLt.png" alt=""><br>得到Flag: nctf{php_is_so_cool}</p>
+<p>###3.ereg函数漏洞###<br>题目链接：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/more.php</a></p>
+<pre><code>&lt;?php
+if (isset ($_GET[&apos;password&apos;])) {
+    if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&apos;password&apos;]) === FALSE)
+    {
+        echo &apos;&lt;p&gt;You password must be alphanumeric&lt;/p&gt;&apos;;
+    }
+    else if (strlen($_GET[&apos;password&apos;]) &lt; 8 &amp;&amp; $_GET[&apos;password&apos;] &gt; 9999999)
+    {
+        if (strpos ($_GET[&apos;password&apos;], &apos;*-*&apos;) !== FALSE)
+        {
+            die(&apos;Flag: &apos; . $flag);
+        }
+        else
+        {
+            echo(&apos;&lt;p&gt;*-* have not been found&lt;/p&gt;&apos;);
+        }
+    }
+    else
+    {
+        echo &apos;&lt;p&gt;Invalid password&lt;/p&gt;&apos;;
+    }
+}
+?&gt;
+</code></pre><p>分析代码：<br>    （1）<br><code>if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) === FALSE)
+        {
+            echo &#39;&lt;p&gt;You password must be alphanumeric&lt;/p&gt;&#39;;
+        }</code>、<br>知道存在ereg漏洞，输入的password必须是含有数字和字母的，ereg漏洞其实就是%00截断；<br>（2）<code>strlen($_GET[&#39;password&#39;]) &lt; 8 &amp;&amp; $_GET[&#39;password&#39;] &gt; 9999999</code>得知这个password的长度不能超过8，大小要大于9999999；<br>（3）<code>strpos ($_GET[&#39;password&#39;], &#39;*-*&#39;</code>得知，这个password要包含<em>-</em>，最终才能输出flag。<br>所以我们可以构造这个password=1e8%00<em>-</em>（1e8：表示10的八次方）<br><img src="https://i.imgur.com/QkEIIcg.png" alt=""></p>
 
       
     </div>
@@ -662,7 +703,7 @@ print &apos;Wrong.&apos;;
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.5k字</span>
+  <span class="post-count">博客全站共8.7k字</span>
 </div>
 
 
