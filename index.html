@@ -507,7 +507,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-29 22:20:38" itemprop="dateModified" datetime="2018-09-29T22:20:38+08:00">2018-09-29</time>
+                <time title="修改时间：2018-09-29 22:22:11" itemprop="dateModified" datetime="2018-09-29T22:22:11+08:00">2018-09-29</time>
               
             
           </span>
@@ -541,40 +541,14 @@
 
       
         
-          
-            <a id="more"></a>
-<p>###1.SQL注入1###</p>
-<p><form method="post" action="index.php"></form></p>
-<p><input type="text" name="user" value="Username"></p>
-<p><input type="password" name="pass" value="Password"></p>
-<p><input type="submit"><br><br><br><a href="index.phps">Source</a><br></p>
-<p>点开source看到：</p>
-<pre><code>    &lt;html&gt;
-    &lt;head&gt;
-    Secure Web Login
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;?php
-    if($_POST[user] &amp;&amp; $_POST[pass]) {#如果上传两个变量user pass，则继续执行下列代码；
-        mysql_connect(SAE_MYSQL_HOST_M . &apos;:&apos; . SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
-      mysql_select_db(SAE_MYSQL_DB);
-      $user = trim($_POST[user]);
-      $pass = md5(trim($_POST[pass]));#去掉上传的user pass前后的空格，并对pass进行md5加密；
-      $sql=&quot;select user from ctf where (user=&apos;&quot;.$user.&quot;&apos;) and (pw=&apos;&quot;.$pass.&quot;&apos;)&quot;;#从特定的表中取出user并赋值给$sql；
-        echo &apos;&lt;/br&gt;&apos;.$sql;
-      $query = mysql_fetch_array(mysql_query($sql));#对$sql进行查询，并将结果数组化，并赋值给$query；
-      if($query[user]==&quot;admin&quot;) {
-          echo &quot;&lt;p&gt;Logged in! flag:******************** &lt;/p&gt;&quot;;
-      }
-      if($query[user] != &quot;admin&quot;) {
-        echo(&quot;&lt;p&gt;You are not admin!&lt;/p&gt;&quot;);
-      }
-    }
-    echo $query[user];
-?&gt;
-</code></pre><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符；<br>发现SQL语句如下：”select user from ctf where (user=’”.$user.”‘) and (pw=’”.$pass.”‘)”，当user=admin&amp;pass=admin时，SQL语句如下：select user from ctf where (user=’admin’) and (pw=’pass’)，因此需要闭合’和），构造万能密码如下：admin’)#即可绕过登录，得到flag。<br><img src="https://i.imgur.com/3nnU4F8.png" alt=""><br>知识点：<br>比如：在用户名输入框中输入:’or 1=1#,密码随便输入，这时候的合成后的SQL查询语句为：<br>　　    select <em> from users where username=’’ or 1=1#’ and password=md5(‘’)<br>　　语义分析：“#”在mysql中是注释符，这样井号后面的内容将被mysql视为注释内容，这样就不会去执行了，换句话说，以下的两句sql语句等价：<br>　　    select </em> from users where username=’’ or 1=1#’ and password=md5(‘’)<br>　　等价于<br>　　    select <em> from users where username=’’ or 1=1<br>　　因为1=1永远都是成立的，即where子句总是为真，将该sql进一步简化之后，等价如下select语句：<br>　　    select </em> from users<br>　　没错，该sql语句的作用是检索users表中的所有字段</p>
-
-          
+          <p>sql的注入知识。。。。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/28/sql注入/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
