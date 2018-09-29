@@ -117,7 +117,7 @@
 <meta property="og:description" content="###1.SQL注入1###    Source 点开source看到：     &amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;     Secure Web Login     &amp;lt;/head&amp;gt;     &amp;lt;body&amp;gt;     &amp;lt;?php     if($_POST[user] &amp;amp;&amp;amp; $_POST[pass]) {#如果上传两个变量user">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/3nnU4F8.png">
-<meta property="og:updated_time" content="2018-09-28T15:12:17.016Z">
+<meta property="og:updated_time" content="2018-09-29T14:20:38.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql注入">
 <meta name="twitter:description" content="###1.SQL注入1###    Source 点开source看到：     &amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;     Secure Web Login     &amp;lt;/head&amp;gt;     &amp;lt;body&amp;gt;     &amp;lt;?php     if($_POST[user] &amp;amp;&amp;amp; $_POST[pass]) {#如果上传两个变量user">
@@ -349,12 +349,24 @@
                 
               
 
-              <time title="创建时间：2018-09-28 22:42:15 / 修改时间：23:12:17" itemprop="dateCreated datePublished" datetime="2018-09-28T22:42:15+08:00">2018-09-28</time>
+              <time title="创建时间：2018-09-28 22:42:15" itemprop="dateCreated datePublished" datetime="2018-09-28T22:42:15+08:00">2018-09-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-29 22:20:38" itemprop="dateModified" datetime="2018-09-29T22:20:38+08:00">2018-09-29</time>
               
             
           </span>
@@ -417,7 +429,7 @@
     }
     echo $query[user];
 ?&gt;
-</code></pre><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符；<br>代码的意思就是post user与pass,然后提交post的user必须是admin.但是密码不知道,所以就得在$sql=这句想办法绕过and (pw=’”.$pass.”‘) 这段 ，所以我们可以在user处进行注入，输入“admin’)#”可以把后面的password注释掉，原来的后括号也没了，所以要补上括号<br><img src="https://i.imgur.com/3nnU4F8.png" alt=""></p>
+</code></pre><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符；<br>发现SQL语句如下：”select user from ctf where (user=’”.$user.”‘) and (pw=’”.$pass.”‘)”，当user=admin&amp;pass=admin时，SQL语句如下：select user from ctf where (user=’admin’) and (pw=’pass’)，因此需要闭合’和），构造万能密码如下：admin’)#即可绕过登录，得到flag。<br><img src="https://i.imgur.com/3nnU4F8.png" alt=""><br>知识点：<br>比如：在用户名输入框中输入:’or 1=1#,密码随便输入，这时候的合成后的SQL查询语句为：<br>　　    select <em> from users where username=’’ or 1=1#’ and password=md5(‘’)<br>　　语义分析：“#”在mysql中是注释符，这样井号后面的内容将被mysql视为注释内容，这样就不会去执行了，换句话说，以下的两句sql语句等价：<br>　　    select </em> from users where username=’’ or 1=1#’ and password=md5(‘’)<br>　　等价于<br>　　    select <em> from users where username=’’ or 1=1<br>　　因为1=1永远都是成立的，即where子句总是为真，将该sql进一步简化之后，等价如下select语句：<br>　　    select </em> from users<br>　　没错，该sql语句的作用是检索users表中的所有字段</p>
 
       
     </div>
@@ -645,7 +657,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.9k字</span>
+  <span class="post-count">博客全站共9.1k字</span>
 </div>
 
 
