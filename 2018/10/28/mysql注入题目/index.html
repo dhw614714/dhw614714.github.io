@@ -108,19 +108,19 @@
 
 
 
-  <meta name="description" content="####1.代号为geek的行动第二幕：废弃的地下黑客论坛####经过一周的外围信息收集，“穿山甲”发现该组织的创始人在大学期间曾经创建过一个小型的地下黑客论坛，时过境迁已无人使用，只有一个废弃的后台。。。输入username：admin    password: 123得到： he sql you execute in final :select * from users where use">
+  <meta name="description" content="做题，做题，多做题。。。">
 <meta name="keywords" content="ctf题目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql注入题目">
 <meta property="og:url" content="http://yoursite.com/2018/10/28/mysql注入题目/index.html">
 <meta property="og:site_name" content="H.">
-<meta property="og:description" content="####1.代号为geek的行动第二幕：废弃的地下黑客论坛####经过一周的外围信息收集，“穿山甲”发现该组织的创始人在大学期间曾经创建过一个小型的地下黑客论坛，时过境迁已无人使用，只有一个废弃的后台。。。输入username：admin    password: 123得到： he sql you execute in final :select * from users where use">
+<meta property="og:description" content="做题，做题，多做题。。。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/32lHTYA.png">
-<meta property="og:updated_time" content="2018-10-28T08:08:28.841Z">
+<meta property="og:updated_time" content="2018-10-28T08:10:41.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql注入题目">
-<meta name="twitter:description" content="####1.代号为geek的行动第二幕：废弃的地下黑客论坛####经过一周的外围信息收集，“穿山甲”发现该组织的创始人在大学期间曾经创建过一个小型的地下黑客论坛，时过境迁已无人使用，只有一个废弃的后台。。。输入username：admin    password: 123得到： he sql you execute in final :select * from users where use">
+<meta name="twitter:description" content="做题，做题，多做题。。。">
 <meta name="twitter:image" content="https://i.imgur.com/32lHTYA.png">
 
 
@@ -349,7 +349,7 @@
                 
               
 
-              <time title="创建时间：2018-10-28 15:10:30 / 修改时间：16:08:28" itemprop="dateCreated datePublished" datetime="2018-10-28T15:10:30+08:00">2018-10-28</time>
+              <time title="创建时间：2018-10-28 15:10:30 / 修改时间：16:10:41" itemprop="dateCreated datePublished" datetime="2018-10-28T15:10:30+08:00">2018-10-28</time>
             
 
             
@@ -387,7 +387,7 @@
       
 
       
-        <a id="more"></a>
+        <p>做题，做题，多做题。。。<br><a id="more"></a></p>
 <p> ####1.代号为geek的行动第二幕：废弃的地下黑客论坛####<br>经过一周的外围信息收集，“穿山甲”发现该组织的创始人在大学期间曾经创建过一个小型的地下黑客论坛，时过境迁已无人使用，只有一个废弃的后台。。。<br><img src="https://i.imgur.com/32lHTYA.png" alt=""><br>输入username：admin<br>    password: 123<br>得到：</p>
 <pre><code>he sql you execute in final :select * from users where username=&apos;admin&apos; and password=&apos;123&apos;;
 </code></pre><p>可以看出SQL语句为：<br><code>select * from users where username=&#39;xxx&#39; and password=&#39;xxx&#39;</code><br>所以构造语句为select * from users where username=’admin’’ and password=’or 1=1#’<br>得到flag：<strong>SYC{h4ck-by-l0c4l6uy-23333333333}</strong></p>
