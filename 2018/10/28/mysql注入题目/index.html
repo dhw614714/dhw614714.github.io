@@ -117,7 +117,7 @@
 <meta property="og:description" content="做题，做题，多做题。。。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/32lHTYA.png">
-<meta property="og:updated_time" content="2018-10-28T08:10:41.722Z">
+<meta property="og:updated_time" content="2018-10-29T04:36:28.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql注入题目">
 <meta name="twitter:description" content="做题，做题，多做题。。。">
@@ -349,12 +349,24 @@
                 
               
 
-              <time title="创建时间：2018-10-28 15:10:30 / 修改时间：16:10:41" itemprop="dateCreated datePublished" datetime="2018-10-28T15:10:30+08:00">2018-10-28</time>
+              <time title="创建时间：2018-10-28 15:10:30" itemprop="dateCreated datePublished" datetime="2018-10-28T15:10:30+08:00">2018-10-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-29 12:36:28" itemprop="dateModified" datetime="2018-10-29T12:36:28+08:00">2018-10-29</time>
               
             
           </span>
@@ -395,6 +407,8 @@
 <pre><code>hack!!! The length of username and password should not exceed 4.
 </code></pre><p>知道注入的用户名和密码长度不能超过4；<br>构造payload为：</p>
 <pre><code>username=\&amp;password=||1#
+</code></pre><p> <strong>SQL中||等同于or</strong><br>等同SQL语句为：</p>
+<pre><code>select * from users where username=&apos;\&apos; and password=&apos;||1#&apos;
 </code></pre><p>然后得到flag：<strong>SYC{yun-we1-ya0-be1-gu0}</strong></p>
 
       
