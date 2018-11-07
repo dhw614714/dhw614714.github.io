@@ -108,35 +108,32 @@
 
 
 
-  <meta name="description" content="我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。">
-<meta name="keywords" content="博客搭建">
+  <meta name="description" content="一些关于文件上传漏洞的学习，正好看到有写的不错的，就一起拿来总结总结。。。">
+<meta name="keywords" content="文件上传绕过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客搭建中的那些问题">
-<meta property="og:url" content="http://yoursite.com/2018/08/01/博客搭建中的那些问题/index.html">
+<meta property="og:title" content="检测文件类型--绕过">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/检测文件类型-绕过/index.html">
 <meta property="og:site_name" content="H.">
-<meta property="og:description" content="我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。">
+<meta property="og:description" content="一些关于文件上传漏洞的学习，正好看到有写的不错的，就一起拿来总结总结。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.imgur.com/4ylwWtb.jpg">
-<meta property="og:image" content="https://i.imgur.com/RnWmig6.jpg">
-<meta property="og:image" content="https://i.imgur.com/Q3cx44p.jpg">
-<meta property="og:image" content="https://i.imgur.com/t3kenBh.jpg">
-<meta property="og:image" content="https://i.imgur.com/YwGdVbd.png">
-<meta property="og:image" content="https://i.imgur.com/N1Fu8vr.png">
-<meta property="og:image" content="https://i.imgur.com/Tdi6oHj.png">
-<meta property="og:image" content="https://i.imgur.com/EEKQjKy.png">
-<meta property="og:image" content="https://i.imgur.com/3CAIikU.png">
-<meta property="og:updated_time" content="2018-08-01T12:40:28.525Z">
+<meta property="og:image" content="https://i.imgur.com/Fqtg00R.png">
+<meta property="og:image" content="https://i.imgur.com/gax1sCJ.png">
+<meta property="og:image" content="https://i.imgur.com/qY9cn0b.png">
+<meta property="og:image" content="https://i.imgur.com/VoyK1Wx.png">
+<meta property="og:image" content="https://i.imgur.com/4k6XMn6.png">
+<meta property="og:image" content="https://i.imgur.com/xplmssQ.png">
+<meta property="og:updated_time" content="2018-11-06T11:04:04.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客搭建中的那些问题">
-<meta name="twitter:description" content="我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。">
-<meta name="twitter:image" content="https://i.imgur.com/4ylwWtb.jpg">
+<meta name="twitter:title" content="检测文件类型--绕过">
+<meta name="twitter:description" content="一些关于文件上传漏洞的学习，正好看到有写的不错的，就一起拿来总结总结。。。">
+<meta name="twitter:image" content="https://i.imgur.com/Fqtg00R.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/01/博客搭建中的那些问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/05/检测文件类型-绕过/"/>
 
 
 
@@ -146,7 +143,7 @@
   };
 </script>
 
-  <title>博客搭建中的那些问题 | H.</title>
+  <title>检测文件类型--绕过 | H.</title>
   
 
 
@@ -315,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/博客搭建中的那些问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/检测文件类型-绕过/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿co">
@@ -332,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">博客搭建中的那些问题
+          <h1 class="post-title" itemprop="name headline">检测文件类型--绕过
               
             
           </h1>
@@ -357,12 +354,24 @@
                 
               
 
-              <time title="创建时间：2018-08-01 08:20:47 / 修改时间：20:40:28" itemprop="dateCreated datePublished" datetime="2018-08-01T08:20:47+08:00">2018-08-01</time>
+              <time title="创建时间：2018-11-05 17:34:10" itemprop="dateCreated datePublished" datetime="2018-11-05T17:34:10+08:00">2018-11-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-06 19:04:04" itemprop="dateModified" datetime="2018-11-06T19:04:04+08:00">2018-11-06</time>
               
             
           </span>
@@ -395,42 +404,28 @@
       
 
       
-        <h2 id="我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。"><a href="#我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。" class="headerlink" title="我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。 "></a><font size="4">我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。 </font></h2><a id="more"></a>
-<p>##1.创建仓库##<br>到这个页面去创建一个新仓库  <a href="http://https://github.com/new" target="_blank" rel="noopener">http://https://github.com/new</a><br>这个新仓库就将是存放你即将拥有的博客的地方<br>注意，你的仓库名不能随便取，这样会导致github混乱，取名的格式应该为“<strong>用户名.github.io</strong>”<br><img src="https://i.imgur.com/4ylwWtb.jpg" alt=""><br>emmm，我就在这儿掉进去了一次，因为用户名和github的用户名不一样，所以出现了错误，但是也是可是弥补的，那就是删除了这个仓库重新建，那么要怎么删除了这个仓库的呢。。<br>下面说一下，要怎么删除仓库。</p>
-<ol>
-<li>首先选中你要删除的仓库，比如我要删除这个dhw614714/python这个仓库；<img src="https://i.imgur.com/RnWmig6.jpg" alt=""></li>
-<li>打开这个仓库之后看见上面的setting，打开它；<img src="https://i.imgur.com/Q3cx44p.jpg" alt=""></li>
-<li>打开之后一直拉到最下面，这时你会看到一个Delete this repository,点击它然后再确定你要删除的仓库即可。<img src="https://i.imgur.com/t3kenBh.jpg" alt=""></li>
-</ol>
+        <p>一些关于文件上传漏洞的学习，正好看到有写的不错的，就一起拿来总结总结。。。</p>
+<a id="more"></a>
 <hr>
-<p>##2.Hexo本地测试的时候要注意##</p>
-<ol>
-<li>Git要运行在本地Hexo的根目录下；</li>
-<li>Git中<strong>Ctrl+C是stop的快捷键</strong>，不要使用Ctrl + C或Ctrl + V的快捷键，用右键；</li>
-<li>本地测试是Hexo is running,Git显示如下，其他状态便无法连接；<br><img src="https://i.imgur.com/YwGdVbd.png" alt=""></li>
-</ol>
+<h2 id="什么是文件上传漏洞"><a href="#什么是文件上传漏洞" class="headerlink" title="什么是文件上传漏洞"></a>什么是文件上传漏洞</h2><p>允许用户上传任意文件可能会让攻击者注入危险内容或恶意代码，并在服务器上运行。</p>
+<h2 id="文件上传的多种绕过方法"><a href="#文件上传的多种绕过方法" class="headerlink" title="文件上传的多种绕过方法"></a>文件上传的多种绕过方法</h2><h3 id="1-前台脚本检测扩展名–绕过"><a href="#1-前台脚本检测扩展名–绕过" class="headerlink" title="1.前台脚本检测扩展名–绕过"></a>1.前台脚本检测扩展名–绕过</h3><p>原理：当用户在客户端选择文件点击上传的时候，客户端还没有向服务器发送任何消息，就对本地文件进行检测来判断是否是可以上传的类型，这种方式称为前台脚本检测扩展名。</p>
+<p>绕过方法：绕过前台脚本检测扩展名，就是将所要上传文件的扩展名更改为符合脚本检测规则的扩展名，通过BurpSuite工具，截取数据包，并将数据包中文件扩展名更改回原来的，达到绕过的目的。 例如:文件名本来为【evil.jpg】，上传时，用BurpSuite截包后，将数据包中的名字改为【evil.php】(或其它脚本类型)即可。</p>
 <hr>
-<p>##3.一些需要注意的细节##</p>
-<ol>
-<li>网上的搭建博客步骤不一定全部都适合你，所以你在搭建的过程一定要注意自己出现的问题及时解决；</li>
-<li>我们在搭建主题的时候，会需要将主题设定，在next主题目录下的_config.yml文件中将scheme设定为Pisces <img src="https://i.imgur.com/N1Fu8vr.png" alt=""><br>注意一定要记得加空格，不然后面会报错，在后面设置主题中会遇到很多添加的，有的一定要看清楚是否要加空格；</li>
-<li>语言设定，在<strong>站点根目录下</strong>修改配置文件_cofig.yml中的language为zh-Hans（简体中文）<img src="https://i.imgur.com/Tdi6oHj.png" alt="">要进入到主题目录下的languages文件中修改zh-Hans.yml，但是当我去我的languages中占我的zh-Hans.yml，就是找不到，我的是zh-CN.yml，我把它删了，删了，，然后重新找别人的复制了一个zh-Hans.yml，然后就一直有错误，这个要记住不能删，这个也是相当于zh-Hans.yml，可以在这儿里面改；</li>
-<li>我们在主题的增改中，一定要记得修改一点部署一下，以便检查是否有什么错误，后来改正找的太辛苦。。</li>
-<li>部署可以通过这三步</li>
-</ol>
-<ul>
-<li>hexo d</li>
-<li>hexo g</li>
-<li>hexo s 生成加预览</li>
+<h3 id="2-Content-Type检测文件类型—绕过"><a href="#2-Content-Type检测文件类型—绕过" class="headerlink" title="2.Content-Type检测文件类型—绕过"></a>2.Content-Type检测文件类型—绕过</h3><p>原理：Content-Type，内容类型，一般是指网页中存在的Content-Type，用于定义网络文件的类型和网页的编码，决定文件接收方将以什么形式、什么编码读取这个文件，这就是经常看到一些Asp网页点击的结果却是下载到的一个文件或一张图片的原因。。</p>
+<p>绕过方法：绕过Content–Type文件类型检测，就是用BurpSuite截取并修改数据包中文件的Content-Type类型(如改为:image/gif)，使其符合白名单的规则，达到上传的目的。<br><img src="https://i.imgur.com/Fqtg00R.png" alt=""></p>
+<hr>
+<h3 id="3-00截断–绕过"><a href="#3-00截断–绕过" class="headerlink" title="3.%00截断–绕过"></a>3.%00截断–绕过</h3><p>原理：在上传的时候，当文件系统读到【0x00】时，会认为文件已经结束。利用00截断就是利用程序员在写程序时对文件的上传路径过滤不严格，产生0x00上传截断漏洞。</p>
+<p>绕过方法：通过抓包截断将【evil.php.jpg】后面的一个【.】换成【0x00】，并在Repater的hex中，找到空格对应的编码修改为%00，再发送包，在上传的时候，当文件系统读到【0x00】时，会认为文件已经结束。这样即保证了上传的文件的后缀是jpg， 又可以上传后舍掉空格后的东西 留下【evil.php】。</p>
+<p>题目：<br><img src="https://i.imgur.com/gax1sCJ.png" alt=""><br>随便选张以jpg为后缀的图片上传，出现了如下的页面<img src="https://i.imgur.com/qY9cn0b.png" alt=""><br>再试试以php为后缀的文件，发现以php为后缀类型的文件又不被支持<br><img src="https://i.imgur.com/VoyK1Wx.png" alt=""><br>所以在这里我们就需要知道这种就需要用到00截断，使用brupsuit抓包得到：<br><strong>我们在/uploads/后面加上7.php jpg</strong><br><img src="https://i.imgur.com/4k6XMn6.png" alt=""><br>然后发送到Repeater，在hex中修改编码为00<br><img src="https://i.imgur.com/xplmssQ.png" alt=""><br>然后发送就可以得到flag了。</p>
+<hr>
+<h3 id="4-服务器端扩展名检测黑名单—绕过"><a href="#4-服务器端扩展名检测黑名单—绕过" class="headerlink" title="4.服务器端扩展名检测黑名单—绕过"></a>4.服务器端扩展名检测黑名单—绕过</h3><p>原理：当浏览器将文件提交到服务器端的时候，服务器端会根据设定的黑白名单对浏览器提交上来的文件扩展名进行检测，如果上传的文件扩展名不符合黑白名单的限制，则不予上传，否则上传成功。</p>
+<p>绕过方法：将一句话木马的文件名【evil.php】，改成【evil.php.abc】(奇怪的不被解析的后缀名都行)。首先，服务器验证文件扩展名的时候，验证的是【.abc】，只要该扩展名符合服务器端黑白名单规则，即可上传。另外，当在浏览器端访问该文件时，Apache如果解析不了【.abc】扩展名，会向前寻找可解析的扩展名，即【.php】。</p>
+<hr>
+<h3 id="5-其它绕过"><a href="#5-其它绕过" class="headerlink" title="5.其它绕过"></a>5.其它绕过</h3><ul>
+<li>后缀名大小写绕过<br>用于只将小写的脚本后缀名(如php)过滤掉的场合；<br>例如:将Burpsuite截获的数据包中的文件名【evil.php】改为【evil.Php】；</li>
+<li>双写后缀名绕过<br>用于只将文件后缀名，例如”php”字符串过滤的场合；<br>例如:上传时将Burpsuite截获的数据包中文件名【evil.php】改为【evil.pphphp】，那么过滤了第一个”php”字符串”后，开头的’p’和结尾的’hp’就组合又形成了【php】；</li>
+<li>特殊后缀名绕过<br>用于检测文件合法性的脚本有问题的场合；<br>例如:将Burpsuite截获的数据包中【evil.php】名字改为【evil.php6】，或加个空格改为【evil.php 】等</li>
 </ul>
-<hr>
-<p>##4.一些补充##</p>
-<ol>
-<li>hexo命令<img src="https://i.imgur.com/EEKQjKy.png" alt=""></li>
-<li>利用markdown编写博客文章–设置题目，分类，标签<img src="https://i.imgur.com/3CAIikU.png" alt=""></li>
-<li>利用markdown编写文章需要注意Markdown的语法<br><a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">markdown基本语法</a></li>
-</ol>
-<p>最后推荐一下搭建博客和设置主题的链接<br><a href="http://www.cnblogs.com/fengxiongZz/p/7707568.html]" target="_blank" rel="noopener">利用hexo和github搭建博客</a><br><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a><br><a href="https://blog.csdn.net/qq_33699981/article/details/72716951" target="_blank" rel="noopener">hexo的next主题个性化教程：打造炫酷网站</a></p>
 
       
     </div>
@@ -451,7 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/博客搭建/" rel="tag"># 博客搭建</a>
+            <a href="/tags/文件上传绕过/" rel="tag"># 文件上传绕过</a>
           
         </div>
       
@@ -464,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/01/敏感词跳过/" rel="next" title="敏感词跳过">
-                <i class="fa fa-chevron-left"></i> 敏感词跳过
+              <a href="/2018/10/28/mysql注入题目/" rel="next" title="mysql注入题目">
+                <i class="fa fa-chevron-left"></i> mysql注入题目
               </a>
             
           </div>
@@ -473,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/01/忽而之间/" rel="prev" title="忽而之间">
-                忽而之间 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -638,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。"><span class="nav-number">1.</span> <span class="nav-text">我的博客由Hexo作为博客框架，Github提供的300M免费空间作为服务器，Next作为博客的主题。这个博客真的是搭建不易啊，在这儿我就数数我掉到几个坑里去了。。。 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是文件上传漏洞"><span class="nav-number">1.</span> <span class="nav-text">什么是文件上传漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件上传的多种绕过方法"><span class="nav-number">2.</span> <span class="nav-text">文件上传的多种绕过方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-前台脚本检测扩展名–绕过"><span class="nav-number">2.1.</span> <span class="nav-text">1.前台脚本检测扩展名–绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Content-Type检测文件类型—绕过"><span class="nav-number">2.2.</span> <span class="nav-text">2.Content-Type检测文件类型—绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-00截断–绕过"><span class="nav-number">2.3.</span> <span class="nav-text">3.%00截断–绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-服务器端扩展名检测黑名单—绕过"><span class="nav-number">2.4.</span> <span class="nav-text">4.服务器端扩展名检测黑名单—绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-其它绕过"><span class="nav-number">2.5.</span> <span class="nav-text">5.其它绕过</span></a></li></ol></li></ol></div>
             
 
           </div>
